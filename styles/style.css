@@ -197,17 +197,26 @@ header {
   -webkit-box-align: end;
       -ms-flex-align: end;
           align-items: flex-end;
-  background: url(./sass/assets/hiking_bells.jpg);
+  background-image: url(./sass/assets/sunset2.jpeg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: bottom;
   overflow: hidden;
 }
 
+header h1 {
+  font-family: 'Righteous', cursive;
+  position: absolute;
+  top: 10vh;
+}
+
 header .leftMountain {
   position:  absolute;
   left:  0;
   bottom:  0;
+  width: 40%;
+  -webkit-filter: brightness(60%);
+          filter: brightness(60%);
 }
 
 header .leftMountainHide {
@@ -221,6 +230,9 @@ header .rightMountain {
   position:  absolute;
   right:  0;
   bottom:  0;
+  -webkit-filter: brightness(60%);
+          filter: brightness(60%);
+  width: 40%;
 }
 
 header .rightMountainHide {
@@ -232,6 +244,7 @@ header .rightMountainHide {
 header img {
   width: 100%;
   height: 80vh;
+  display: block;
 }
 
 header .postal-code {
@@ -243,14 +256,7 @@ header .postal-code input[type=text] {
   border-radius: 35px;
   padding: 10px;
   width: 100%;
-  text-shadow: 5px 2px silver;
-  border: 1px 1px silver;
-  -webkit-box-shadow: 2px 2px 2px 2px silver;
-          box-shadow: 2px 2px 2px 2px silver;
-}
-
-header .postal-code :hover {
-  border: 3px solid darkblue;
+  border: 1px solid silver;
 }
 
 header .label {
