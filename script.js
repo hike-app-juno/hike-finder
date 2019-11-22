@@ -51,7 +51,6 @@ const getHikes = function(dLat, dLong) {
         }
     }).then( function(hikeData){
         
-        console.log(hikeData)
         for(i=0;i<hikeData.trails.length;i++){
  
             const hikeName = (hikeData.trails[i].name);
@@ -77,7 +76,7 @@ const getHikes = function(dLat, dLong) {
                 getRoute(dLat,dLong,aLat,aLong, i);
         }
     })
-}	
+}
 
 const getRoute = function(dLat, dLong, aLat, aLong, resultIndex) {
 
