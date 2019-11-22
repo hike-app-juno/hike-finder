@@ -7,7 +7,7 @@ header{
 	display:flex;
 	justify-content: space-between;
 	align-items: flex-end;
-	background-image: url(sass/assets/sunset2.jpeg);
+	background: url(./sass/assets/hiking_bells.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: bottom;
@@ -41,34 +41,34 @@ header{
 		bottom: 0;
 		}
 
-		 img{
-		   width: 100%;
-		   height: 80vh;
-	 	  }
+		img{
+			width: 100%;
+			height: 80vh;
+		}
 
-	  
 
-	   .postal-code{
-		   position: absolute;
-		   top: 50vh;
 
-		   input[type=text]{
-			   border-radius:35px;
-			   padding:10px;
-			   width: 100%;
-			   text-shadow: 5px 2px silver;
-			   border: 1px 1px silver;
-			   box-shadow: 2px 2px 2px 2px silver;
-		   }
+		.postal-code{
+			position: absolute;
+			top: 50vh;
 
-		   :hover{
-			   border:3px solid darkblue;
-		   }
-	   }
+			input[type=text]{
+				border-radius:35px;
+				padding:10px;
+				width: 100%;
+				text-shadow: 5px 2px silver;
+				border: 1px 1px silver;
+				box-shadow: 2px 2px 2px 2px silver;
+			}
 
-	   .label{
-		   visibility: hidden;
-	   }
+			:hover{
+				border:3px solid darkblue;
+			}
+		}
+
+		.label{
+			visibility: hidden;
+		}
 
 	
 
