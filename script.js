@@ -36,6 +36,49 @@ const getCoordinates = function(postalCode) {
     });
 };
 
+hikeApp.baseUrl = 'https://www.hikingproject.com/data/get-trails';
+hikeApp.key = '200640927-0078512b6eac032c4ea121fea696b36f';
+
+const getHikes = function(dLat, dLong) {
+    $.ajax({
+        url: hikeApp.baseUrl, 
+        method: 'GET',
+        dataType: 'json',
+        data: {
+            key: hikeApp.key, 
+            lat: dLat,
+            lon: dLong
+        }
+    }).then( function(hikeData){
+        
+        console.log(hikeData)
+        for(i=0;i<hikeData.trails.length;i++){
+ 
+            const hikeName = (hikeData.trails[i].name);
+            const hikeSummary = (hikeData.trails[i].summary);
+            const hikeLocation = (hikeData.trails[i].location);
+            const hikeImage = (hikeData.trails[i].imgSmallMed)
+            const hikeWebsite = (hikeData.trails[i].url)
+            const hikeStars = (hikeData.trails[i].stars)
+            const aLat = hikeData.trails[i].latitude;
+            const aLong = hikeData.trails[i].longitude;
+    
+                const hikeInfo = `
+                <div id="hike-info-${[i]}">
+                    <a href=${hikeWebsite}>
+                        <img src="${hikeImage}" alt="${hikeName}">
+                        <h2>${hikeName}</h2>
+                    </a>
+                    <p>${hikeStars} Stars ${hikeLocation}</p>
+                    <p>Ascent: ${hikeData.trails[i].ascent}, Descent: ${hikeData.trails[i].descent}</p>
+                    <p>${hikeSummary}</p>
+                </div>`
+                $(".results").append(hikeInfo);
+                getRoute(dLat,dLong,aLat,aLong, i);
+        }
+    })
+}	
+
 const getRoute = function(dLat, dLong, aLat, aLong, resultIndex) {
 
 const depart = dLat + ",%20" + dLong
@@ -77,6 +120,11 @@ $(function(){
     $("input[type='submit']").on("click", function(){
         $(".results").html(" ")
         getCoordinates(postalCode);
+
+		$('.rightMountain').addClass('rightMountainHide');
+		$('.leftMountain').addClass('leftMountainHide');
+
+
     })
 });
 
