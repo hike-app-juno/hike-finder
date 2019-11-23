@@ -4,6 +4,8 @@ const routeKey = `Aia7N7IYQAD2wuOi_t3bwY9x9AqsymMip5UUZSY_OhyJF9uYSkjb3UkwFhIVP7
 const geoKey = `51b65eec5dc1479abcc1262f017405a2`
 
 let postalCode = " "
+let dLat = 0;
+let dLong = 0;
 
 const totalTime = function (seconds){
     const hours = Math.floor(seconds/3600);
@@ -11,9 +13,9 @@ const totalTime = function (seconds){
     return `${hours} h ${minutes} min`
 };
 
-const getCoordinates = function(postalCode) {
+hikeApp.getCoordinates = function(postalCode) {
 
-     postalCode = $("input").val();
+    postalCode = $("input").val();
 
     $.ajax({
         url:`http://dev.virtualearth.net/REST/v1/Locations/CA/-/${postalCode}/-/-`,
@@ -23,13 +25,13 @@ const getCoordinates = function(postalCode) {
             key: routeKey
         }
     }).then(function(data){
-        const dLat = data.resourceSets[0].resources[0].point.coordinates[0];
-        const dLong = data.resourceSets[0].resources[0].point.coordinates[1];
+        dLat = data.resourceSets[0].resources[0].point.coordinates[0];
+        dLong = data.resourceSets[0].resources[0].point.coordinates[1];
         console.log(dLat, dLong);
 
-        $.when(getCoordinates)
+        $.when(hikeApp.getCoordinates)
         .then(function(){
-            getHikes (dLat, dLong);
+            hikeApp.getHikes (dLat, dLong);
         })
     }).fail(function(error){
         console.log(error);
@@ -39,7 +41,7 @@ const getCoordinates = function(postalCode) {
 hikeApp.baseUrl = 'https://www.hikingproject.com/data/get-trails';
 hikeApp.key = '200640927-0078512b6eac032c4ea121fea696b36f';
 
-const getHikes = function(dLat, dLong) {
+hikeApp.getHikes = function(dLat, dLong) {
     $.ajax({
         url: hikeApp.baseUrl, 
         method: 'GET',
@@ -50,35 +52,38 @@ const getHikes = function(dLat, dLong) {
             lon: dLong
         }
     }).then( function(hikeData){
-        
-        for(i=0;i<hikeData.trails.length;i++){
- 
-            const hikeName = (hikeData.trails[i].name);
-            const hikeSummary = (hikeData.trails[i].summary);
-            const hikeLocation = (hikeData.trails[i].location);
-            const hikeImage = (hikeData.trails[i].imgSmallMed)
-            const hikeWebsite = (hikeData.trails[i].url)
-            const hikeStars = (hikeData.trails[i].stars)
-            const aLat = hikeData.trails[i].latitude;
-            const aLong = hikeData.trails[i].longitude;
-    
-                const hikeInfo = `
-                <div id="hike-info-${[i]}">
-                    <a href=${hikeWebsite}>
-                        <img src="${hikeImage}" alt="${hikeName}">
-                        <h2>${hikeName}</h2>
-                    </a>
-                    <p>${hikeStars} Stars ${hikeLocation}</p>
-                    <p>Ascent: ${hikeData.trails[i].ascent}, Descent: ${hikeData.trails[i].descent}</p>
-                    <p>${hikeSummary}</p>
-                </div>`
-                $(".results").append(hikeInfo);
-                getRoute(dLat,dLong,aLat,aLong, i);
-        }
+        hikeApp.displayHikes(hikeData);
     })
 }
 
-const getRoute = function(dLat, dLong, aLat, aLong, resultIndex) {
+hikeApp.displayHikes = function (hikeData){
+    for(i=0;i<hikeData.trails.length;i++){
+
+        const hikeName = (hikeData.trails[i].name);
+        const hikeSummary = (hikeData.trails[i].summary);
+        const hikeLocation = (hikeData.trails[i].location);
+        const hikeImage = (hikeData.trails[i].imgSmallMed)
+        const hikeWebsite = (hikeData.trails[i].url)
+        const hikeStars = (hikeData.trails[i].stars)
+        const aLat = hikeData.trails[i].latitude;
+        const aLong = hikeData.trails[i].longitude;
+
+        const hikeInfo = `
+        <div id="hike-info-${[i]}">
+            <a href=${hikeWebsite}>
+                <img src="${hikeImage}" alt="${hikeName}">
+                <h2>${hikeName}</h2>
+            </a>
+            <p>${hikeStars} Stars ${hikeLocation}</p>
+            <p>Ascent: ${hikeData.trails[i].ascent}, Descent: ${hikeData.trails[i].descent}</p>
+            <p>${hikeSummary}</p>
+        </div>`
+        $(".results").append(hikeInfo);
+        hikeApp.getRoute(dLat, dLong, aLat, aLong, i);
+    };
+};
+
+hikeApp.getRoute = function(dLat, dLong, aLat, aLong, resultIndex) {
 
 const depart = dLat + ",%20" + dLong
 const arrive = aLat + ",%20" + aLong
@@ -118,13 +123,9 @@ hikeApp.displayRoute = function (result, resultIndex){
 $(function(){
     $("input[type='submit']").on("click", function(){
         $(".results").html(" ")
-        getCoordinates(postalCode);
+        hikeApp.getCoordinates(postalCode);
 
 		$('.rightMountain').addClass('rightMountainHide');
 		$('.leftMountain').addClass('leftMountainHide');
-
-
     })
 });
-
-//////////
