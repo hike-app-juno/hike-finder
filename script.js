@@ -125,7 +125,12 @@ $(function(){
         $(".results").html(" ")
         hikeApp.getCoordinates(postalCode);
 
-		$('.rightMountain').addClass('rightMountainHide');
-		$('.leftMountain').addClass('leftMountainHide');
+		$('.leftMountain').toggleClass('fadeOutLeft');
+		$('.rightMountain').toggleClass('fadeOutRight');
+
+		$('html, body').animate({
+        scrollTop: $('.results').offset().top
+   	 	}, 2000);
+
     })
 });
