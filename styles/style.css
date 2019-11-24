@@ -304,9 +304,6 @@ header .label {
 
 .results > div {
   width: 50%;
-}
-
-.results .hike {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -322,6 +319,11 @@ header .label {
           justify-content: center;
 }
 
-.results .hike p {
+.results > div a {
+  text-decoration: none;
+  color: black;
+}
+
+.results > div p {
   text-align: left;
 }

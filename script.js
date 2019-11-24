@@ -10,7 +10,11 @@ let dLong = 0;
 const totalTime = function (seconds){
     const hours = Math.floor(seconds/3600);
     const minutes = Math.round((seconds %= 3600)/60);
-    return `${hours} h ${minutes} min`
+    if(hours > 0){
+        return `${hours} h ${minutes} min`
+    }else{
+        return `${minutes} min`
+    }
 };
 
 hikeApp.getCoordinates = function(postalCode) {

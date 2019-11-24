@@ -63,12 +63,7 @@ header{
 
 	.postal-code{
 		position: relative;
-		// top: 50vh;
 		width: 20%;
-		// left: 0;
-		// right: 0;
-		// margin-left: auto;
-		// margin-right: auto;
 		align-self: center;
 		display: flex;
 	
@@ -114,13 +109,15 @@ header{
 
 	&>div{
 		width: 50%;
-	}
-
-	.hike{
 		display: flex;
 		align-items: center;
 		flex-direction: column;
 		justify-content: center;
+
+		a{
+			text-decoration: none;
+			color: black;
+		}
 		
 		p{
 			text-align: left;
