@@ -29,6 +29,12 @@ header{
 		font-family: 'Righteous', cursive;
 		text-align: center;
 		font-size: 6rem;
+		color: rgb(18, 21, 54);
+		text-transform: lowercase;
+
+		&:after{
+			content: ".";
+		}
 	}
 
 	
@@ -88,7 +94,7 @@ header{
 			border: none;
 			background: transparent;
 			padding: 10px 20px;
-			right: 15px;
+			right: 10px;
 
 			&:hover,
 			&:focus{

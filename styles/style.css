@@ -236,6 +236,12 @@ header h1 {
   font-family: 'Righteous', cursive;
   text-align: center;
   font-size: 6rem;
+  color: #121536;
+  text-transform: lowercase;
+}
+
+header h1:after {
+  content: ".";
 }
 
 header .leftMountain {
@@ -298,7 +304,7 @@ header .postal-code button {
   border: none;
   background: transparent;
   padding: 10px 20px;
-  right: 15px;
+  right: 10px;
 }
 
 header .postal-code button:hover, header .postal-code button:focus {
