@@ -185,6 +185,15 @@ body, header, section, aside, article, h1, h2, h3, h4, h5, h6, p, form, input, l
   padding: 0;
 }
 
+html {
+  font-size: 62.5%;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
 header {
   height: 100vh;
   position: relative;
@@ -207,12 +216,13 @@ header {
 header h1 {
   font-family: 'Righteous', cursive;
   position: absolute;
-  top: 10vh;
+  top: 30vh;
   left: 0;
   right: 0;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
+  font-size: 6rem;
 }
 
 header .leftMountain {
@@ -260,13 +270,12 @@ header .postal-code {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  font-size: 2rem;
 }
 
 header .postal-code input[type=text] {
   border-radius: 35px;
   padding: 10px 20px;
-  width: 275px;
-  border: 1px solid silver;
 }
 
 header .postal-code button {
@@ -277,15 +286,11 @@ header .postal-code button {
   border: none;
   background: transparent;
   padding: 10px 20px;
-  right: 20px;
+  right: 15px;
 }
 
 header .postal-code button:hover, header .postal-code button:focus {
-  color: blue;
-}
-
-header .label {
-  visibility: hidden;
+  color: #252e74;
 }
 
 .wrapper {
@@ -326,4 +331,18 @@ header .label {
 
 .results > div p {
   text-align: left;
+}
+
+.visuallyHidden:not(:focus):not(:active) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  -webkit-clip-path: inset(100%);
+          clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
 }
