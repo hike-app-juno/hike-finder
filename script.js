@@ -78,9 +78,10 @@ hikeApp.displayHikes = function (hikeData){
                 <img src="${hikeImage}" alt="${hikeName}">
                 <h2>${hikeName}</h2>
             </a>
-            <p>${hikeStars} Stars ${hikeLocation}</p>
-            <p>Ascent: ${hikeData.trails[i].ascent}, Descent: ${hikeData.trails[i].descent}</p>
-            <p>${hikeSummary}</p>
+            <div class="star-rating"><p>${hikeLocation}</p><p><i class="fas fa-star"></i>${hikeStars} Stars </p></div>
+            <p><i class="fas fa-mountain"></i>Ascent: ${hikeData.trails[i].ascent}, Descent: ${hikeData.trails[i].descent}</p>
+			<div class="route-${[i]}"></div>
+            <blockquote class="summary">${hikeSummary}</blockquote>
         </div>`
         $(".results").append(hikeInfo);
         hikeApp.getRoute(dLat, dLong, aLat, aLong, i);
@@ -117,11 +118,11 @@ hikeApp.displayRoute = function (result, resultIndex){
 
         const travelInfo = `
             <p>Distance: ${driveDistance} km</p>
-            <p>Estimated Drive Time: ${totalTime(driveTimeSeconds)}</p>
+            <p><i class="fas fa-car-side"></i>Estimated Drive Time: ${totalTime(driveTimeSeconds)}</p>
             <p>With Traffic: ${totalTime(driveTrafficSeconds)}</p>
         `
 
-        $("#hike-info-"+resultIndex).append(travelInfo);
+        $(".route-"+resultIndex).append(travelInfo);
 }
 
 hikeApp.init = function () {

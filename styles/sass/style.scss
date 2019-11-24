@@ -107,7 +107,7 @@ header{
 .wrapper{
 	max-width: 1200px;
 	margin: 0 auto;
-	width: 80%;
+	width: 90%;
 }
 
 .results {
@@ -115,11 +115,13 @@ header{
 	flex-wrap: wrap;
 
 	&>div{
-		width: 50%;
+		width: 40%;
 		display: flex;
 		align-items: center;
 		flex-direction: column;
 		justify-content: center;
+		margin: 5%;
+		font-size: 2rem;
 
 		a{
 			text-decoration: none;
@@ -127,7 +129,28 @@ header{
 		}
 		
 		p{
-			text-align: left;
+			text-align: center;
+		}
+
+		i{
+			padding-right: 5px;
+		}
+
+		.summary{
+			background: lightblue;
+			font-style: italic;
+		}
+		.summary:before{
+			content:"“";
+		}
+
+		.summary:after{
+			content: "”";
+		}
+
+		.star-rating{
+			display: flex;
+			justify-content: space-between;
 		}
 	}
 }
@@ -143,4 +166,10 @@ header{
     clip-path: inset(100%);
     clip: rect(0 0 0 0);
     overflow: hidden;
+}
+
+footer{
+	background: rgb(37, 46, 116);
+	color: white;
+	padding: 1% 0;
 }
