@@ -123,7 +123,7 @@ hikeApp.displayRoute = function (result, resultIndex){
             <p>With Traffic: ${totalTime(driveTrafficSeconds)}</p>
         `
 
-        $("#hike-info-"+resultIndex).append(travelInfo);
+        $(".route-"+resultIndex).append(travelInfo);
 }
 
 hikeApp.init = function () {
