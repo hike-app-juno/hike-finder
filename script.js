@@ -121,7 +121,7 @@ hikeApp.displayRoute = function (result, resultIndex){
 }
 
 $(function(){
-    $("input[type='submit']").on("click", function(){
+    $("button[type='submit']").on("click", function(){
         $(".results").html(" ")
         hikeApp.getCoordinates(postalCode);
 
@@ -130,7 +130,8 @@ $(function(){
 
 		$('html, body').animate({
         scrollTop: $('.results').offset().top
-   	 	}, 2000);
+            }, 
+            2000);
 
     })
 });

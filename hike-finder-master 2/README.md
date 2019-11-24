@@ -1,2 +1,0 @@
-# hike-finder
-# hike finder
