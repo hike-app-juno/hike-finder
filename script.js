@@ -21,6 +21,7 @@ hikeApp.getCoordinates = function(postalCode) {
 
     postalCode = $("input").val();
 
+
     $.ajax({
         url:`http://dev.virtualearth.net/REST/v1/Locations/CA/-/${postalCode}/-/-`,
         method: "GET",
@@ -127,6 +128,7 @@ hikeApp.displayRoute = function (result, resultIndex){
 
 hikeApp.init = function () {
     $(".results").html(" ")
+	
     hikeApp.getCoordinates(postalCode);
 
     $('.leftMountain').toggleClass('fadeOutLeft');
@@ -139,4 +141,5 @@ hikeApp.init = function () {
 
 $(function(){
     $("button[type='submit']").on("click", hikeApp.init)
+	
 });
