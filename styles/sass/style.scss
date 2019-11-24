@@ -62,13 +62,14 @@ header{
 	}
 
 	.postal-code{
-		position: absolute;
-		top: 50vh;
-		width:275px;
-		left: 0;
-		right: 0;
-		margin-left: auto;
-		margin-right: auto;
+		position: relative;
+		// top: 50vh;
+		width: 20%;
+		// left: 0;
+		// right: 0;
+		// margin-left: auto;
+		// margin-right: auto;
+		align-self: center;
 		display: flex;
 	
 

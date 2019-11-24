@@ -253,13 +253,10 @@ header img {
 }
 
 header .postal-code {
-  position: absolute;
-  top: 50vh;
-  width: 275px;
-  left: 0;
-  right: 0;
-  margin-left: auto;
-  margin-right: auto;
+  position: relative;
+  width: 20%;
+  -ms-flex-item-align: center;
+      align-self: center;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
