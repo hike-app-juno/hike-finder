@@ -124,18 +124,18 @@ hikeApp.displayRoute = function (result, resultIndex){
         $("#hike-info-"+resultIndex).append(travelInfo);
 }
 
+hikeApp.init = function () {
+    $(".results").html(" ")
+    hikeApp.getCoordinates(postalCode);
+
+    $('.leftMountain').toggleClass('fadeOutLeft');
+    $('.rightMountain').toggleClass('fadeOutRight');
+
+    $('html, body').animate({
+    scrollTop: $('.results').offset().top
+    }, 2000);
+};
+
 $(function(){
-    $("button[type='submit']").on("click", function(){
-        $(".results").html(" ")
-        hikeApp.getCoordinates(postalCode);
-
-		$('.leftMountain').toggleClass('fadeOutLeft');
-		$('.rightMountain').toggleClass('fadeOutRight');
-
-		$('html, body').animate({
-        scrollTop: $('.results').offset().top
-            }, 
-            2000);
-
-    })
+    $("button[type='submit']").on("click", hikeApp.init)
 });
