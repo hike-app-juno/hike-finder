@@ -13,14 +13,20 @@ header{
 	background-position: bottom;
 	overflow: hidden;
 
-	h1{
-		font-family: 'Righteous', cursive;
+	.title{
 		position: absolute;
 		top: 30vh;
 		left: 0;
 		right: 0;
 		margin-left: auto;
 		margin-right: auto;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+
+	h1{
+		font-family: 'Righteous', cursive;
 		text-align: center;
 		font-size: 6rem;
 	}
@@ -64,7 +70,6 @@ header{
 
 	.postal-code{
 		position: relative;
-		width: 20%;
 		align-self: center;
 		display: flex;
 		font-size: 2rem;

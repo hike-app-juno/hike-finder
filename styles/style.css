@@ -213,14 +213,27 @@ header {
   overflow: hidden;
 }
 
-header h1 {
-  font-family: 'Righteous', cursive;
+header .title {
   position: absolute;
   top: 30vh;
   left: 0;
   right: 0;
   margin-left: auto;
   margin-right: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+header h1 {
+  font-family: 'Righteous', cursive;
   text-align: center;
   font-size: 6rem;
 }
@@ -264,7 +277,6 @@ header img {
 
 header .postal-code {
   position: relative;
-  width: 20%;
   -ms-flex-item-align: center;
       align-self: center;
   display: -webkit-box;
