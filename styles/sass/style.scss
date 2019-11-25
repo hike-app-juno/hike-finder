@@ -114,13 +114,29 @@ header{
 
 h3{
 	font-size: 2rem;
+	padding: 15px 0 0 5px;
 }
 
-// .go-home{
-// 	position: absolute;
-// 	position: fixed;
-// 	right:0;
-// }
+.go-home{
+	opacity: 0;
+	position: fixed;
+	top: 0;
+	z-index: 10;
+	display:block;
+	margin: 8px;
+	font-size: 2rem;
+
+	button{
+		padding: 5px;
+		background: rgb(255, 223, 95);
+		color: black;
+		font-family: 'Patua One', cursive; 
+		border-radius: 20px;
+		border: 2px solid rgb(248, 205, 31);
+
+	}	
+
+}
 
 .results {
 	display: flex;
@@ -196,6 +212,12 @@ h3{
 	}
 }
 
+.info{
+	justify-content: space-between;
+	display: flex;
+	flex-direction: column;
+}
+
 .results .fa-star{
 	padding-right: 12px;
 }
@@ -225,8 +247,36 @@ footer{
 	display: none;
 }
 
+@media (max-width: 1210px){
+	.info p:first-of-type{
+		display:none;
+	}
+	h2{
+		font-size: 2.5rem;
+	}
+	.container{
+		flex-direction: column;
+	}
+
+	.results>div{
+		margin: 2%;
+		width: 46%;
+	}
+}
 @media (max-width: 765px){
 	.results>div{
 		width: 95%;
 	}
+}
+
+@media (max-width: 500px){
+	header .title{
+		top: 10vh;
+		z-index: 10;
+
+		h1{
+			font-size: 5rem;
+		}
+	}
+
 }

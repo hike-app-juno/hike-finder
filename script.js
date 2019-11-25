@@ -87,7 +87,7 @@ hikeApp.displayHikes = function (hikeData){
                 </div>
                 <div class="rating-drive-${[i]} info">
                     <p><span class="sr-only">Average user rating:</span><i class="fas fa-star" title="Average user rating"></i>${hikeStars} Stars</<i></p>
-                    <br>
+                    
                 </div>
             </div>
             <blockquote>${hikeSummary}</blockquote>
@@ -133,6 +133,15 @@ hikeApp.displayRoute = function (result, resultIndex){
         $(".ascent-route-"+resultIndex).append(distance);
 }
 
+$('.go-home').on('click', function(){
+	$('.leftMountain').toggleClass('fadeOutLeft');
+    $('.rightMountain').toggleClass('fadeOutRight');
+	$(".go-home").css("opacity", 0);
+	 $('html, body').animate({
+    scrollTop: $('html').offset().top
+    }, 2000);
+})
+
 hikeApp.init = function () {
     $(".results").html(" ")
 	
@@ -142,6 +151,9 @@ hikeApp.init = function () {
 
     $('.leftMountain').toggleClass('fadeOutLeft');
     $('.rightMountain').toggleClass('fadeOutRight');
+
+	$("footer").css("display", "block")
+	$(".go-home").css("opacity", 1);
 
     $('html, body').animate({
     scrollTop: $('.results').offset().top
