@@ -344,11 +344,13 @@ header .postal-code button:hover, header .postal-code button:focus {
   font-size: 2rem;
   -webkit-transition: 0.5s;
   transition: 0.5s;
+  -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .results > div:hover, .results > div:focus {
-  -webkit-transform: scale(1.1);
-          transform: scale(1.1);
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
 }
 
 .results > div a {
@@ -358,10 +360,20 @@ header .postal-code button:hover, header .postal-code button:focus {
 
 .results > div h2 {
   font-family: 'Patua One', cursive;
+  padding: 0 20px;
 }
 
 .results > div i {
   padding-right: 5px;
+}
+
+.results > div .location {
+  font-style: italic;
+}
+
+.results > div img {
+  height: 40vh;
+  padding-top: 20px;
 }
 
 .results > div blockquote {
@@ -377,21 +389,23 @@ header .postal-code button:hover, header .postal-code button:focus {
   content: "”";
 }
 
-.results > div .info {
+.results > div .container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: reverse;
-      -ms-flex-direction: row-reverse;
-          flex-direction: row-reverse;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 70%;
 }
 
 .fa-star {
   padding-left: 15px;
+}
+
+.fas fa-map-pin {
+  padding-right: 15px;
+  padding-left: 30px;
 }
 
 .visuallyHidden:not(:focus):not(:active) {

@@ -79,12 +79,15 @@ hikeApp.displayHikes = function (hikeData){
                 <img src="${hikeImage}" alt="${hikeName}">
                 <h2>${hikeName}</h2>
             </a>
-            <p>${hikeLocation}</p>
-            <div class="rating-distance-${[i]} info">
-                <p><i class="fas fa-star"></i>${hikeStars} Stars</p>
+            <p class="location">${hikeLocation}</p>
+            <div class="container">
+                <div class="ascent-route-${[i]}">
+                    <p><i class="fas fa-mountain"></i>Ascent: ${hikeData.trails[i].ascent} m</p>
+                </div>
+                <div class="rating-drive-${[i]} info">
+                    <p><i class="fas fa-star"></i>${hikeStars} Stars</p>
+                </div>
             </div>
-            <div class="route-${[i]}"></div>
-            <p><i class="fas fa-mountain"></i>Ascent: ${hikeData.trails[i].ascent} m, Descent: ${hikeData.trails[i].descent} m</p>
             <blockquote>${hikeSummary}</blockquote>
         </div>`
         $(".results").append(hikeInfo);
@@ -120,12 +123,12 @@ hikeApp.displayRoute = function (result, resultIndex){
         // const driveTimeSeconds = result.resourceSets[0].resources[0].travelDuration;
         const driveTrafficSeconds = result.resourceSets[0].resources[0].travelDurationTraffic;
 
-        const distance = `<p><i class="fas fa-map-pin"></i>  Distance: ${driveDistance} km</p>`
-        const travelInfo = `
-            <p><i class="fas fa-car-side"></i>Estimated Drive Time: ${totalTime(driveTrafficSeconds)}</p>
+        const distance = `<p><i class="fas fa-map-pin"></i> Distance: ${driveDistance} km</p>`
+        const driveTime = `
+            <p><i class="fas fa-car-side"></i> ${totalTime(driveTrafficSeconds)}</p>
         `
-        $(".rating-distance-"+resultIndex).append(distance);
-        $(".route-"+resultIndex).append(travelInfo);
+        $(".rating-drive-"+resultIndex).append(driveTime);
+        $(".ascent-route-"+resultIndex).append(distance);
 }
 
 hikeApp.init = function () {
