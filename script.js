@@ -39,7 +39,7 @@ hikeApp.getCoordinates = function(postalCode) {
             hikeApp.getHikes (dLat, dLong);
         })
     }).fail(function(error){
-        console.log(error);
+        alert(`404 - Page Not Found due to ${error}`);
     });
 };
 
@@ -57,8 +57,14 @@ hikeApp.getHikes = function(dLat, dLong) {
             lon: dLong
         }
     }).then( function(hikeData){
-        hikeApp.displayHikes(hikeData);
-    })
+        if(hikeData.trails.length === 0){
+            alert('Sorry! No hikes were found in this area!')
+        }else{
+            hikeApp.displayHikes(hikeData);
+        }
+    }).fail(function(error){
+        alert(`404 - Page Not Found due to ${error}`);
+    });
 }
 
 hikeApp.displayHikes = function (hikeData){
@@ -115,7 +121,7 @@ $.ajax({
         hikeApp.displayRoute(result, resultIndex);
 
     }).fail(function(error){
-        console.log(error);
+        alert(`404 - Page Not Found due to ${error}`);
     });
 };
 
@@ -143,21 +149,25 @@ $('.go-home').on('click', function(){
 })
 
 hikeApp.init = function () {
-    $(".results").html(" ")
-	
-    hikeApp.getCoordinates(postalCode);
+    if($("input").val() === ""){
+        alert("Please enter postal code")
+    }else{
+        $(".results").html(" ")
 
-    $("footer").css("display", "block");
-
-    $('.leftMountain').toggleClass('fadeOutLeft');
-    $('.rightMountain').toggleClass('fadeOutRight');
-
-	$("footer").css("display", "block")
-	$(".go-home").css("opacity", 1);
-
-    $('html, body').animate({
-    scrollTop: $('.results').offset().top
-    }, 2000);
+        hikeApp.getCoordinates(postalCode);
+    
+        $("footer").css("display", "block");
+    
+        $('.leftMountain').toggleClass('fadeOutLeft');
+        $('.rightMountain').toggleClass('fadeOutRight');
+    
+        $("footer").css("display", "block")
+        $(".go-home").css("opacity", 1);
+    
+        $('html, body').animate({
+        scrollTop: $('.results').offset().top
+        }, 2000);
+    }
 };
 
 $(function(){

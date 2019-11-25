@@ -318,6 +318,7 @@ header .postal-code button:hover, header .postal-code button:focus {
 h3 {
   font-size: 2rem;
   padding: 15px 0 0 5px;
+  margin-left: 25px;
 }
 
 .go-home {
