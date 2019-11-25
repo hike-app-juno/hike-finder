@@ -82,10 +82,12 @@ hikeApp.displayHikes = function (hikeData){
             <p class="location">${hikeLocation}</p>
             <div class="container">
                 <div class="ascent-route-${[i]}">
-                    <p><i class="fas fa-mountain"></i>Ascent: ${hikeData.trails[i].ascent} m</p>
+                    <p><span class="sr-only">Ascent of hike:</span><i class="fas fa-mountain" title="Ascent of hike"></i>Ascent: ${hikeData.trails[i].ascent} m</p>
+                    <h3>Get There In...</h3>
                 </div>
                 <div class="rating-drive-${[i]} info">
-                    <p><span title="Average user rating"><i class="fas fa-star"></i>${hikeStars} Stars</span></p>
+                    <p><span class="sr-only">Average user rating:</span><i class="fas fa-star" title="Average user rating"></i>${hikeStars} Stars</<i></p>
+                    <br>
                 </div>
             </div>
             <blockquote>${hikeSummary}</blockquote>
@@ -123,9 +125,9 @@ hikeApp.displayRoute = function (result, resultIndex){
         // const driveTimeSeconds = result.resourceSets[0].resources[0].travelDuration;
         const driveTrafficSeconds = result.resourceSets[0].resources[0].travelDurationTraffic;
 
-        const distance = `<p><span title="Distance between your postal code location and the hike trail"><i class="fas fa-map-pin"></i> Distance: ${driveDistance} km</span></p>`
+        const distance = `<p><span class="sr-only">Distance from postal code to hike trail:</span><i class="fas fa-map-pin" title="Distance from postal code to hike trail"></i> Distance: ${driveDistance} km</<i></p>`
         const driveTime = `
-            <p><span title="Estimated driving time from your postal code location to the hike trail"><i class="fas fa-car-side"></i> ${totalTime(driveTrafficSeconds)}</span></p>
+            <p><span class="sr-only">Driving time from postal code to hike trail:</span><i class="fas fa-car-side" title="Driving time from postal code to hike trail"></i> ${totalTime(driveTrafficSeconds)}</span></p>
         `
         $(".rating-drive-"+resultIndex).append(driveTime);
         $(".ascent-route-"+resultIndex).append(distance);

@@ -315,6 +315,10 @@ header .postal-code button:hover, header .postal-code button:focus {
   width: 90%;
 }
 
+h3 {
+  font-size: 2rem;
+}
+
 .results {
   display: -webkit-box;
   display: -ms-flexbox;
