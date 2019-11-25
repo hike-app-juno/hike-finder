@@ -78,17 +78,17 @@ hikeApp.displayHikes = function (hikeData){
             <a href=${hikeWebsite}>
                 <img src="${hikeImage}" alt="${hikeName}">
                 <h2>${hikeName}</h2>
-                <p class="location">${hikeLocation}</p>
-                <div class="container">
-                    <div class="ascent-route-${[i]}">
-                        <p><i class="fas fa-mountain"></i>Ascent: ${hikeData.trails[i].ascent} m</p>
-                    </div>
-                    <div class="rating-drive-${[i]} info">
-                        <p><i class="fas fa-star"></i>${hikeStars} Stars</p>
-                    </div>
-                </div>
-                <blockquote>${hikeSummary}</blockquote>
             </a>
+            <p class="location">${hikeLocation}</p>
+            <div class="container">
+                <div class="ascent-route-${[i]}">
+                    <p><i class="fas fa-mountain"></i>Ascent: ${hikeData.trails[i].ascent} m</p>
+                </div>
+                <div class="rating-drive-${[i]} info">
+                    <p><i class="fas fa-star"></i>${hikeStars} Stars</p>
+                </div>
+            </div>
+            <blockquote>${hikeSummary}</blockquote>
         </div>`
         $(".results").append(hikeInfo);
         hikeApp.getRoute(dLat, dLong, aLat, aLong, i);
