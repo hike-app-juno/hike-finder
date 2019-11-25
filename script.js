@@ -67,9 +67,9 @@ hikeApp.displayHikes = function (hikeData){
         const hikeName = (hikeData.trails[i].name);
         const hikeSummary = (hikeData.trails[i].summary);
         const hikeLocation = (hikeData.trails[i].location);
-        const hikeImage = (hikeData.trails[i].imgSmallMed)
-        const hikeWebsite = (hikeData.trails[i].url)
-        const hikeStars = (hikeData.trails[i].stars)
+        const hikeImage = (hikeData.trails[i].imgSmallMed);
+        const hikeWebsite = (hikeData.trails[i].url);
+        const hikeStars = (hikeData.trails[i].stars);
         const aLat = hikeData.trails[i].latitude;
         const aLong = hikeData.trails[i].longitude;
 
@@ -79,10 +79,13 @@ hikeApp.displayHikes = function (hikeData){
                 <img src="${hikeImage}" alt="${hikeName}">
                 <h2>${hikeName}</h2>
             </a>
-            <div class="star-rating"><p>${hikeLocation}</p><p><i class="fas fa-star"></i>${hikeStars} Stars </p></div>
-            <p><i class="fas fa-mountain"></i>Ascent: ${hikeData.trails[i].ascent}, Descent: ${hikeData.trails[i].descent}</p>
-			<div class="route-${[i]}"></div>
-            <blockquote class="summary">${hikeSummary}</blockquote>
+            <p>${hikeLocation}</p>
+            <div class="rating-distance-${[i]} info">
+                <p><i class="fas fa-star"></i>${hikeStars} Stars</p>
+            </div>
+            <div class="route-${[i]}"></div>
+            <p><i class="fas fa-mountain"></i>Ascent: ${hikeData.trails[i].ascent} m, Descent: ${hikeData.trails[i].descent} m</p>
+            <blockquote>${hikeSummary}</blockquote>
         </div>`
         $(".results").append(hikeInfo);
         hikeApp.getRoute(dLat, dLong, aLat, aLong, i);
@@ -113,16 +116,15 @@ $.ajax({
 
 hikeApp.displayRoute = function (result, resultIndex){
 
-        const driveDistance = result.resourceSets[0].resources[0].travelDistance;
-        const driveTimeSeconds = result.resourceSets[0].resources[0].travelDuration;
+        const driveDistance = Math.round(result.resourceSets[0].resources[0].travelDistance);
+        // const driveTimeSeconds = result.resourceSets[0].resources[0].travelDuration;
         const driveTrafficSeconds = result.resourceSets[0].resources[0].travelDurationTraffic;
 
+        const distance = `<p><i class="fas fa-map-pin"></i>  Distance: ${driveDistance} km</p>`
         const travelInfo = `
-            <p>Distance: ${driveDistance} km</p>
-            <p><i class="fas fa-car-side"></i>Estimated Drive Time: ${totalTime(driveTimeSeconds)}</p>
-            <p>With Traffic: ${totalTime(driveTrafficSeconds)}</p>
+            <p><i class="fas fa-car-side"></i>Estimated Drive Time: ${totalTime(driveTrafficSeconds)}</p>
         `
-
+        $(".rating-distance-"+resultIndex).append(distance);
         $(".route-"+resultIndex).append(travelInfo);
 }
 
@@ -130,6 +132,8 @@ hikeApp.init = function () {
     $(".results").html(" ")
 	
     hikeApp.getCoordinates(postalCode);
+
+    $("footer").css("display", "block");
 
     $('.leftMountain').toggleClass('fadeOutLeft');
     $('.rightMountain').toggleClass('fadeOutRight');
@@ -141,5 +145,4 @@ hikeApp.init = function () {
 
 $(function(){
     $("button[type='submit']").on("click", hikeApp.init)
-	
 });
