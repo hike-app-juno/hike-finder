@@ -76,7 +76,7 @@ hikeApp.displayHikes = function (hikeData){
         const hikeInfo = `
         <div id="hike-info-${[i]}">
             <a href=${hikeWebsite}>
-                <img src="${hikeImage}" alt="${hikeName}">
+                <img src="${hikeImage}" alt=" ">
                 <h2>${hikeName}</h2>
             </a>
             <p class="location">${hikeLocation}</p>
@@ -85,7 +85,7 @@ hikeApp.displayHikes = function (hikeData){
                     <p><i class="fas fa-mountain"></i>Ascent: ${hikeData.trails[i].ascent} m</p>
                 </div>
                 <div class="rating-drive-${[i]} info">
-                    <p><i class="fas fa-star"></i>${hikeStars} Stars</p>
+                    <p><span title="Average user rating"><i class="fas fa-star"></i>${hikeStars} Stars</span></p>
                 </div>
             </div>
             <blockquote>${hikeSummary}</blockquote>
@@ -123,9 +123,9 @@ hikeApp.displayRoute = function (result, resultIndex){
         // const driveTimeSeconds = result.resourceSets[0].resources[0].travelDuration;
         const driveTrafficSeconds = result.resourceSets[0].resources[0].travelDurationTraffic;
 
-        const distance = `<p><i class="fas fa-map-pin"></i> Distance: ${driveDistance} km</p>`
+        const distance = `<p><span title="Distance between your postal code location and the hike trail"><i class="fas fa-map-pin"></i> Distance: ${driveDistance} km</span></p>`
         const driveTime = `
-            <p><i class="fas fa-car-side"></i> ${totalTime(driveTrafficSeconds)}</p>
+            <p><span title="Estimated driving time from your postal code location to the hike trail"><i class="fas fa-car-side"></i> ${totalTime(driveTrafficSeconds)}</span></p>
         `
         $(".rating-drive-"+resultIndex).append(driveTime);
         $(".ascent-route-"+resultIndex).append(distance);

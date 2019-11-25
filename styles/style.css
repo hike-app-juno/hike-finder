@@ -301,8 +301,8 @@ header .postal-code button {
       align-self: center;
   border: none;
   background: transparent;
-  padding: 10px 20px;
-  right: 10px;
+  padding: 10px 15px;
+  right: 5px;
 }
 
 header .postal-code button:hover, header .postal-code button:focus {
@@ -363,6 +363,11 @@ header .postal-code button:hover, header .postal-code button:focus {
   padding: 0 20px;
 }
 
+.results > div h2:hover, .results > div h2:focus {
+  -webkit-text-decoration: underline lightblue;
+          text-decoration: underline lightblue;
+}
+
 .results > div i {
   padding-right: 5px;
 }
@@ -399,13 +404,17 @@ header .postal-code button:hover, header .postal-code button:focus {
   width: 70%;
 }
 
-.fa-star {
-  padding-left: 15px;
+.results > div .container > div {
+  text-align: left;
 }
 
-.fas fa-map-pin {
-  padding-right: 15px;
-  padding-left: 30px;
+.results .fa-star {
+  padding-right: 12px;
+}
+
+.results .fa-map-pin {
+  padding-right: 5px;
+  padding-left: 8px;
 }
 
 .visuallyHidden:not(:focus):not(:active) {

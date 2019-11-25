@@ -91,8 +91,8 @@ header{
 			align-self: center;
 			border: none;
 			background: transparent;
-			padding: 10px 20px;
-			right: 10px;
+			padding: 10px 15px;
+			right: 5px;
 
 			&:hover,
 			&:focus{
@@ -101,6 +101,10 @@ header{
 		}
 	}
 }
+
+// header button i{
+// 	color: rgb(14, 16, 41);
+// }
 
 .wrapper{
 	max-width: 1200px;
@@ -143,6 +147,11 @@ header{
 		h2{
 			font-family: 'Patua One', cursive;
 			padding: 0 20px;
+
+			&:hover,
+			&:focus{
+				text-decoration: underline lightblue;
+			}
 		}
 
 		i{
@@ -175,17 +184,21 @@ header{
 			display: flex;
 			justify-content: space-between;
 			width: 70%;
+
+			&>div{
+				text-align: left;
+			}
 		}
 	}
 }
 
-.fa-star{
-	padding-left: 15px
+.results .fa-star{
+	padding-right: 12px;
 }
 
-.fas fa-map-pin{
-	padding-right: 15px;
-	padding-left: 30px;
+.results .fa-map-pin{
+	padding-right: 5px;
+	padding-left: 8px;
 }
 
 .visuallyHidden:not(:focus):not(:active) {
