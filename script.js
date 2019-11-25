@@ -23,7 +23,7 @@ hikeApp.getCoordinates = function(postalCode) {
 
 
     $.ajax({
-        url:`http://dev.virtualearth.net/REST/v1/Locations/CA/-/${postalCode}/-/-`,
+        url:`https://dev.virtualearth.net/REST/v1/Locations/CA/-/${postalCode}/-/-`,
         method: "GET",
         dataTypes: 'json',
         data:{
@@ -98,7 +98,7 @@ const depart = dLat + ",%20" + dLong
 const arrive = aLat + ",%20" + aLong
 
 $.ajax({
-    url:`http://dev.virtualearth.net/REST/V1/Routes/Driving?wp.0=${depart}&wp.1=${arrive}`,
+    url:`https://dev.virtualearth.net/REST/V1/Routes/Driving?wp.0=${depart}&wp.1=${arrive}`,
     method: "GET",
     dataTypes: 'json',
     data:{
