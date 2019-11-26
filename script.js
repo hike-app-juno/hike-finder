@@ -7,6 +7,7 @@ let postalCode = " "
 let dLat = 0;
 let dLong = 0;
 
+// Function that runs to determine the amount of time to drive to the location
 const totalTime = function (seconds){
     const hours = Math.floor(seconds/3600);
     const minutes = Math.round((seconds %= 3600)/60);
@@ -17,11 +18,12 @@ const totalTime = function (seconds){
     }
 };
 
+// Function to generate the lat & long coordinates based on the user input
 hikeApp.getCoordinates = function(postalCode) {
 
     postalCode = $("input").val();
 
-
+// First ajax call to obtain the coordinates based on postal code
     $.ajax({
         url:`https://dev.virtualearth.net/REST/v1/Locations/CA/-/${postalCode}/-/-`,
         method: "GET",
@@ -32,7 +34,6 @@ hikeApp.getCoordinates = function(postalCode) {
     }).then(function(data){
         dLat = data.resourceSets[0].resources[0].point.coordinates[0];
         dLong = data.resourceSets[0].resources[0].point.coordinates[1];
-        console.log(dLat, dLong);
 
         $.when(hikeApp.getCoordinates)
         .then(function(){
@@ -43,6 +44,7 @@ hikeApp.getCoordinates = function(postalCode) {
     });
 };
 
+// Ajax call to the Hike Finder API to find hikes based on lat and long coordinates
 hikeApp.baseUrl = 'https://www.hikingproject.com/data/get-trails';
 hikeApp.key = '200640927-0078512b6eac032c4ea121fea696b36f';
 
@@ -67,6 +69,7 @@ hikeApp.getHikes = function(dLat, dLong) {
     });
 }
 
+// Function to display the data from the Hike Finder API
 hikeApp.displayHikes = function (hikeData){
     for(i=0;i<hikeData.trails.length;i++){
 
@@ -109,11 +112,12 @@ hikeApp.displayHikes = function (hikeData){
     };
 };
 
+// Function to determine the route/length of time to arrive at the hike destination
 hikeApp.getRoute = function(dLat, dLong, aLat, aLong, resultIndex) {
 
 const depart = dLat + ",%20" + dLong
 const arrive = aLat + ",%20" + aLong
-
+// Ajax call to get driving information
 $.ajax({
     url:`https://dev.virtualearth.net/REST/V1/Routes/Driving?wp.0=${depart}&wp.1=${arrive}`,
     method: "GET",
@@ -131,10 +135,10 @@ $.ajax({
     });
 };
 
+// Function to display route information based on the hike details displayed.
 hikeApp.displayRoute = function (result, resultIndex){
 
         const driveDistance = Math.round(result.resourceSets[0].resources[0].travelDistance);
-        // const driveTimeSeconds = result.resourceSets[0].resources[0].travelDuration;
         const driveTrafficSeconds = result.resourceSets[0].resources[0].travelDurationTraffic;
 
         const distance = `<p><span class="sr-only">Distance from postal code to hike trail:</span><i class="fas fa-map-pin" title="Distance from postal code to hike trail"></i> Distance: ${driveDistance} km</<i></p>`
@@ -145,6 +149,7 @@ hikeApp.displayRoute = function (result, resultIndex){
         $(".ascent-route-"+resultIndex).append(distance);
 }
 
+// Function to run when 'enter new postal code' button is clicked
 $('.go-home').on('click', function(){
 	$('.leftMountain').toggleClass('fadeOutLeft');
     $('.rightMountain').toggleClass('fadeOutRight');
@@ -156,6 +161,7 @@ $('.go-home').on('click', function(){
     }, 2000);
 })
 
+// Init method
 hikeApp.init = function () {
     if($("input").val() === "" || $("input").val() === " "){
         alert("Please enter a postal code")
@@ -164,9 +170,7 @@ hikeApp.init = function () {
         $("button[type='submit']").attr("disabled", true);
 
         hikeApp.getCoordinates(postalCode);
-    
-        $("footer").css("display", "block");
-    
+        
         $('.leftMountain').toggleClass('fadeOutLeft');
         $('.rightMountain').toggleClass('fadeOutRight');
     
@@ -179,6 +183,7 @@ hikeApp.init = function () {
     }
 };
 
+// Doc ready
 $(function(){
     alert("Enter a Canadian or American postal code in the text bar and click the magnifying glass to get nearby hikes")
     $("button[type='submit']").on("click", hikeApp.init)

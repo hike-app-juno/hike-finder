@@ -126,11 +126,7 @@ h1{
 	width: 90%;
 }
 
-h3{
-	font-size: 2rem;
-	padding: 15px 0 0 5px;
-	margin-left: 25px;
-}
+
 
 // NEW POSTAL CODE BUTTON
 .go-home{
@@ -187,6 +183,12 @@ h3{
 			&:focus{
 				text-decoration: underline lightblue;
 			}
+		}
+
+		h3{
+			font-size: 2rem;
+			padding: 15px 0 0 5px;
+			margin-left: 25px;
 		}
 
 		i{
