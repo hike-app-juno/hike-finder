@@ -1,6 +1,15 @@
 @import 'setup';
 
+// Wrapper styles
+.wrapper{
+	max-width: 1200px;
+	margin: 0 auto;
+	width: 90%;
+}
+
 // HEADER
+
+// flex and format two mountain images
 header{
 	height: 100vh;
 	position: relative;
@@ -12,7 +21,7 @@ header{
 	background-size: cover;
 	background-position: bottom;
 	overflow: hidden;
-	
+//Format left mountain image
 	.leftMountain{
 		position: absolute;
 		left: 0;
@@ -20,7 +29,7 @@ header{
 		width: 40%;
 		filter: brightness(60%);
 		}
-
+// add this class on click so moutain disappears
 	.leftMountainHide{
 		position: absolute;
 		left: -700px;
@@ -28,7 +37,7 @@ header{
 		overflow: hidden;
 	}
 
-		
+//Format right mountain image
 	.rightMountain{
 		position: absolute;
 		right: 0;
@@ -36,13 +45,13 @@ header{
 		filter: brightness(60%);
 		width: 40%;
 		}
-
+// add this class on click so moutain disappears
 	.rightMountainHide{
 		position: absolute;
 		right: -500px;
 		bottom: 0;
 		}
-
+// Format each mountain image, the width and height
 	img{
 		width: 100%;
 		height: 80vh;
@@ -50,7 +59,7 @@ header{
 	}
 }
 
-// TITLE CONTAINER in HEADER
+// TITLE CONTAINER in HEADER, includes h1 and search bar
 .title{
 	position: absolute;
 	top: 30vh;
@@ -74,22 +83,19 @@ h1{
 	}
 }
 
-// Enter Postal Code Input and Submit
+// Container with the Enter Postal Code Input and Submit button, flex and format both
 .postal-code{
 	position: relative;
 	align-self: center;
 	display: flex;
 	font-size: 2rem;
 	padding: 30px 0;
-
+// Format input text bar for entering in postal code
 	input[type=text]{
 		border-radius:35px;
 		padding:10px 20px;
-		// text-shadow: 5px 2px silver;
-		// border: 1px solid silver;
-		// box-shadow:  2px 3px 0px -2px #ccc;
 	}
-
+// Format the submit button to submit postal code
 	button{
 		position: absolute;
 		align-self: center;
@@ -120,15 +126,8 @@ h1{
     overflow: hidden;
 }
 
-.wrapper{
-	max-width: 1200px;
-	margin: 0 auto;
-	width: 90%;
-}
-
-
-
 // NEW POSTAL CODE BUTTON
+// Format div container that button is inside - make fixed, and placed at top left corner with padding
 .go-home{
 	opacity: 0;
 	position: fixed;
@@ -137,7 +136,7 @@ h1{
 	display:block;
 	margin: 8px;
 	font-size: 2rem;
-
+// format button itself - added colors, font family and padding
 	button{
 		padding: 5px;
 		background: rgb(255, 223, 95);
@@ -152,7 +151,7 @@ h1{
 .results {
 	display: flex;
 	flex-wrap: wrap;
-
+//Formats every div container of each hike result
 	&>div{
 		align-self: flex-start;
 		width: 40%;
@@ -169,12 +168,12 @@ h1{
 		&:focus{
 			transform: scale(1.05);
 		}
-
+//Formats the anchor tag of each div container that is wrapped around the hike name and image
 		a{
 			text-decoration: none;
 			color: black;
 		}
-		
+//Format title of each hike trail, plus hover states
 		h2{
 			font-family: 'Patua One', cursive;
 			padding: 0 20px;
@@ -184,66 +183,73 @@ h1{
 				text-decoration: underline lightblue;
 			}
 		}
-
+//Format "Get There In..."
 		h3{
 			font-size: 2rem;
 			padding: 15px 0 0 5px;
 			margin-left: 25px;
 		}
-
+//Add some padding between each icon and words
 		i{
 			padding-right: 5px;
 		}
-
+//Italicize the location of each hike (city, state/province)
 		.location{
 			font-style: italic;
 		}
-
+//Format the image of each hike result
 		img{
 			height: 40vh;
 			padding-top: 20px;
 		}
-
-		blockquote{
-			background: lightblue;
-			font-style: italic;
-
-			&::before{
-				content:"“";
-			}
-			
-			&::after{
-			content: "”";
-			}
-		}
-
-		.container{
-			display: flex;
-			justify-content: space-between;
-			width: 70%;
-
-			&>div{
-				text-align: left;
-			}
-		}
 	}
 }
 
+//Formats rating and driving statistic
 .info{
 	justify-content: space-between;
 	display: flex;
 	flex-direction: column;
 }
 
+//Format short summary of each hike trail - added quotes, itlalicized and background color
+blockquote{
+	background: lightblue;
+	font-style: italic;
+
+	&::before{
+		content:"“";
+	}
+	
+	&::after{
+	content: "”";
+	}
+}
+
+//Format container with stats for each height (includes ascent, travel information)
+.stats-container{
+	display: flex;
+	justify-content: space-between;
+	width: 70%;
+
+	&>div{
+		text-align: left;
+	}
+}
+
+//SPECIFIC ICON formatting for each statistic, in stats container
+// star icon from font awesome, adding padding (for star rating)
 .results .fa-star{
 	padding-right: 12px;
 }
 
+//map pin icon from font awesome, adding padding (for distance)
 .results .fa-map-pin{
 	padding-right: 5px;
 	padding-left: 8px;
 }
 
+//FOOTER STYLES
 footer{
 	background: rgb(37, 46, 116);
 	color: white;
@@ -252,8 +258,34 @@ footer{
 }
 
 // RESPONSIVE
+//Small desktop
 @media (max-width: 1210px){
 
+//Make each hike trail name smaller
+	h2{
+		font-size: 2.5rem;
+	}
+
+	//Format results container for each hike
+	//Also adding position relative to star votes, so star votes stay within container
+	.results>div{
+		position: relative;
+		margin: 2%;
+		width: 46%;
+
+		img{
+			height: 250px;
+		}
+	}
+//Reformat stats container in each hike result 
+	.stats-container{
+		flex-direction: column;
+	}
+//Get rid of padding for car icon (Car time ride statistic) to better align with text above
+	.results div i.fa-car-side{
+		padding-right: 0;
+	}
+//Absolute position the star votes statistic to top right corner of each hike
 	.info p:first-of-type{
 		background: rgb(255, 223, 95);
 		position: absolute;
@@ -261,34 +293,23 @@ footer{
 		top: 10px;
 		right: 0;
 	}
-	h2{
-		font-size: 2.5rem;
-	}
-	.container{
-		flex-direction: column;
-	}
-
-	.results>div{
-		position: relative;
-		margin: 2%;
-		width: 46%;
-	}
-
-	.results div i.fa-car-side{
-		padding-right: 0;
-	}
 }
+
+//Ipad
 @media (max-width: 765px){
+	//Make each hike result container a larger percentage width
 	.results>div{
 		width: 95%;
 	}
 }
 
+//Phone
 @media (max-width: 500px){
+//Reposition container with title of app and search bar so it is higher up
 	header .title{
 		top: 10vh;
 		z-index: 10;
-
+//Made Hike Finder, main title of app, a smaller font
 		h1{
 			font-size: 5.25rem;
 		}

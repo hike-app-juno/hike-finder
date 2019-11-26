@@ -195,6 +195,12 @@ img {
   height: auto;
 }
 
+.wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 90%;
+}
+
 header {
   height: 100vh;
   position: relative;
@@ -324,12 +330,6 @@ h1:after {
   overflow: hidden;
 }
 
-.wrapper {
-  max-width: 1200px;
-  margin: 0 auto;
-  width: 90%;
-}
-
 .go-home {
   opacity: 0;
   position: fixed;
@@ -421,33 +421,6 @@ h1:after {
   padding-top: 20px;
 }
 
-.results > div blockquote {
-  background: lightblue;
-  font-style: italic;
-}
-
-.results > div blockquote::before {
-  content: "“";
-}
-
-.results > div blockquote::after {
-  content: "”";
-}
-
-.results > div .container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  width: 70%;
-}
-
-.results > div .container > div {
-  text-align: left;
-}
-
 .info {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
@@ -459,6 +432,33 @@ h1:after {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+}
+
+blockquote {
+  background: lightblue;
+  font-style: italic;
+}
+
+blockquote::before {
+  content: "“";
+}
+
+blockquote::after {
+  content: "”";
+}
+
+.stats-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 70%;
+}
+
+.stats-container > div {
+  text-align: left;
 }
 
 .results .fa-star {
@@ -478,29 +478,32 @@ footer {
 }
 
 @media (max-width: 1210px) {
-  .info p:first-of-type {
-    background: #ffdf5f;
-    position: absolute;
-    padding: 5px;
-    top: 10px;
-    right: 0;
-  }
   h2 {
     font-size: 2.5rem;
-  }
-  .container {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
   }
   .results > div {
     position: relative;
     margin: 2%;
     width: 46%;
   }
+  .results > div img {
+    height: 250px;
+  }
+  .stats-container {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
   .results div i.fa-car-side {
     padding-right: 0;
+  }
+  .info p:first-of-type {
+    background: #ffdf5f;
+    position: absolute;
+    padding: 5px;
+    top: 10px;
+    right: 0;
   }
 }
 

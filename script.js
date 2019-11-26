@@ -3,7 +3,7 @@ const hikeApp = {};
 const routeKey = `Aia7N7IYQAD2wuOi_t3bwY9x9AqsymMip5UUZSY_OhyJF9uYSkjb3UkwFhIVP7nJ`
 const geoKey = `51b65eec5dc1479abcc1262f017405a2`
 
-let postalCode = " "
+let postalCode = " ";
 let dLat = 0;
 let dLong = 0;
 
@@ -95,14 +95,13 @@ hikeApp.displayHikes = function (hikeData){
                 <h2>${hikeName}</h2>
             </a>
             <p class="location">${hikeLocation}</p>
-            <div class="container">
+            <div class="stats-container">
                 <div class="ascent-route-${[i]}">
                     <p><span class="sr-only">Ascent of hike:</span><i class="fas fa-mountain" title="Ascent of hike"></i>Ascent: ${hikeData.trails[i].ascent} m</p>
                     <h3>Get There In...</h3>
                 </div>
                 <div class="rating-drive-${[i]} info">
-                    <p><span class="sr-only">Average user rating:</span><i class="fas fa-star" title="Average user rating"></i>${hikeStars} Stars</<i></p>
-                    
+                    <p><span class="sr-only">Average user rating:</span><i class="fas fa-star" title="Average user rating"></i>${hikeStars} Stars</<i></p> 
                 </div>
             </div>
             <blockquote>${hikeSummary}</blockquote>
@@ -150,7 +149,7 @@ hikeApp.displayRoute = function (result, resultIndex){
 }
 
 // Function to run when 'enter new postal code' button is clicked
-$('.go-home').on('click', function(){
+$('.go-home').on('click', hikeApp.home = function(){
 	$('.leftMountain').toggleClass('fadeOutLeft');
     $('.rightMountain').toggleClass('fadeOutRight');
     $('input').val("")
