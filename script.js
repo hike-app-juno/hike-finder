@@ -152,9 +152,11 @@ hikeApp.displayRoute = function (result, resultIndex){
 $('.go-home').on('click', hikeApp.home = function(){
 	$('.leftMountain').toggleClass('fadeOutLeft');
     $('.rightMountain').toggleClass('fadeOutRight');
+    $('input').attr('readonly', false); 
     $('input').val("")
     $(".go-home").css("opacity", 0);
     $("button[type='submit']").attr("disabled", false);
+    $(".go-home button").attr('disabled', true);
 	$('html, body').animate({
     scrollTop: $('html').offset().top
     }, 2000);
@@ -165,8 +167,10 @@ hikeApp.init = function () {
     if($("input").val() === "" || $("input").val() === " "){
         alert("Please enter a postal code")
     }else{
-        $(".results").html(" ")
+
+        $(".results").html(" ");
         $("button[type='submit']").attr("disabled", true);
+        $('input').attr('readonly', true); 
 
         hikeApp.getCoordinates(postalCode);
         
@@ -175,6 +179,7 @@ hikeApp.init = function () {
     
         $("footer").css("display", "block")
         $(".go-home").css("opacity", 1);
+        $(".go-home button").removeAttr('disabled');
     
         $('html, body').animate({
         scrollTop: $('.results').offset().top
@@ -184,6 +189,8 @@ hikeApp.init = function () {
 
 // Doc ready
 $(function(){
-    alert("Enter a Canadian or American postal code in the text bar and click the magnifying glass to get nearby hikes")
-    $("button[type='submit']").on("click", hikeApp.init)
+    //Instructions
+    alert("Enter a Canadian or American postal code in the text bar and click the magnifying glass to get nearby hikes. Make sure to click \"New Postal Code\" in the top left corner once you're done with your current postal code results.");
+    //On click , init app
+    $("button[type='submit']").on("click", hikeApp.init);
 });
