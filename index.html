@@ -16,9 +16,10 @@
         <div class="title">
             <h1>Hike Finder</h1>
             <div class="postal-code">
+                <!-- Input text bar for entering in postal code -->
                 <label for="postalCode" class="visuallyHidden">Enter Postal Code</label>
                 <input type="text" placeholder="Postal Code" name="postalCode" required>
-    
+                <!-- Submit button to submit postal code and get results -->
                 <label for="submit" class="visuallyHidden">Submit Postal Code</label>
                 <button type="submit" name="submit" title="Submit"><i class="fas fa-search"></i></button>
             </div>
@@ -30,16 +31,13 @@
             <img src="styles/sass/assets/rightMountain.png" alt="">
         </div>
 	</header>
-
-<!-- Fixed button -->
+<!-- Fixed button to enter new search result-->
 	<aside class="go-home">
 			<button>New Postal Code</button>
 	</aside>
-
 <!-- Start of results section -->
     <section class="results wrapper">
     </section>
-
 <!-- Start of footer -->
 	<footer>
 		<div class="wrapper">
@@ -48,7 +46,6 @@
 		</div>
 	</footer>
 </body>
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <script src="./script.js"></script>
 </html>
