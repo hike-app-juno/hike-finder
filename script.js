@@ -189,8 +189,16 @@ hikeApp.init = function () {
 
 // Doc ready
 $(function(){
-    //Instructions
-    alert("Enter a Canadian or American postal code in the text bar and click the magnifying glass to get nearby hikes. Make sure to click \"New Postal Code\" in the top left corner once you're done with your current postal code results.");
+    //Instructions to user
+    swal({
+		title: 'Welcome!',
+		text: 'Enter a Canadian or American postal code in the text bar and click the magnifying glass to get nearby hikes. Enter \"New Postal Code\" in the top left corner once you\'re done with your results to start again.',
+		type: 'success',
+		showOkButton: true,
+		confirmButtonColor: '#0A0F3C',
+		confirmButtonText: 'Let\'s Go!',
+		cancelButtonText: 'No.'
+	});
     //On click , init app
     $("button[type='submit']").on("click", hikeApp.init);
 });
