@@ -39,7 +39,7 @@ hikeApp.getCoordinates = function(postalCode) {
             hikeApp.getHikes (dLat, dLong);
         })
     }).fail(function(error){
-        alert(`404 - Page Not Found due to ${error}`);
+        alert(`404 - Page Not Found. Click the top left button to try another postal code or try again later!`);
     });
 };
 
@@ -58,12 +58,12 @@ hikeApp.getHikes = function(dLat, dLong) {
         }
     }).then( function(hikeData){
         if(hikeData.trails.length === 0){
-            alert('Sorry! No hikes were found in this area!')
+            alert('Sorry! No hikes were found in this area! Click the top left button to try another postal code.')
         }else{
             hikeApp.displayHikes(hikeData);
         }
     }).fail(function(error){
-        alert(`404 - Page Not Found due to ${error}`);
+        alert(`404 - Page Not Found. Click the top left button to try another postal code or try again later!`);
     });
 }
 
@@ -73,7 +73,13 @@ hikeApp.displayHikes = function (hikeData){
         const hikeName = (hikeData.trails[i].name);
         const hikeSummary = (hikeData.trails[i].summary);
         const hikeLocation = (hikeData.trails[i].location);
-        const hikeImage = (hikeData.trails[i].imgSmallMed);
+        const hikeImage = function(){
+            if(hikeData.trails[i].imgSmallMed === ""){
+                return `styles/sass/assets/placeholder.jpg`
+            }else{
+                return hikeData.trails[i].imgSmallMed;
+            }
+        }
         const hikeWebsite = (hikeData.trails[i].url);
         const hikeStars = (hikeData.trails[i].stars);
         const aLat = hikeData.trails[i].latitude;
@@ -82,7 +88,7 @@ hikeApp.displayHikes = function (hikeData){
         const hikeInfo = `
         <div id="hike-info-${[i]}">
             <a href=${hikeWebsite}>
-                <img src="${hikeImage}" alt=" ">
+                <img src="${hikeImage()}" alt=" ">
                 <h2>${hikeName}</h2>
             </a>
             <p class="location">${hikeLocation}</p>
@@ -121,7 +127,7 @@ $.ajax({
         hikeApp.displayRoute(result, resultIndex);
 
     }).fail(function(error){
-        alert(`404 - Page Not Found due to ${error}`);
+        alert(`404 - Page Not Found. Click the top left button to try another postal code or try again later!`);
     });
 };
 
@@ -142,17 +148,20 @@ hikeApp.displayRoute = function (result, resultIndex){
 $('.go-home').on('click', function(){
 	$('.leftMountain').toggleClass('fadeOutLeft');
     $('.rightMountain').toggleClass('fadeOutRight');
-	$(".go-home").css("opacity", 0);
-	 $('html, body').animate({
+    $('input').val("")
+    $(".go-home").css("opacity", 0);
+    $("button[type='submit']").attr("disabled", false);
+	$('html, body').animate({
     scrollTop: $('html').offset().top
     }, 2000);
 })
 
 hikeApp.init = function () {
-    if($("input").val() === ""){
-        alert("Please enter postal code")
+    if($("input").val() === "" || $("input").val() === " "){
+        alert("Please enter a postal code")
     }else{
         $(".results").html(" ")
+        $("button[type='submit']").attr("disabled", true);
 
         hikeApp.getCoordinates(postalCode);
     
@@ -171,5 +180,6 @@ hikeApp.init = function () {
 };
 
 $(function(){
+    alert("Enter a Canadian or American postal code in the text bar and click the magnifying glass to get nearby hikes")
     $("button[type='submit']").on("click", hikeApp.init)
 });

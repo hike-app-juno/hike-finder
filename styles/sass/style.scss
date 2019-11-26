@@ -1,5 +1,6 @@
 @import 'setup';
 
+// HEADER
 header{
 	height: 100vh;
 	position: relative;
@@ -11,29 +12,6 @@ header{
 	background-size: cover;
 	background-position: bottom;
 	overflow: hidden;
-
-	.title{
-		position: absolute;
-		top: 30vh;
-		left: 0;
-		right: 0;
-		margin-left: auto;
-		margin-right: auto;
-		display: flex;
-		flex-direction: column;
-	}
-
-	h1{
-		font-family: 'Righteous', cursive;
-		font-size: 6rem;
-		color: rgb(14, 16, 41);
-		text-transform: lowercase;
-
-		&:after{
-			content: ".";
-		}
-	}
-
 	
 	.leftMountain{
 		position: absolute;
@@ -70,41 +48,77 @@ header{
 		height: 80vh;
 		display: block;
 	}
+}
 
-	.postal-code{
-		position: relative;
+// TITLE CONTAINER in HEADER
+.title{
+	position: absolute;
+	top: 30vh;
+	left: 0;
+	right: 0;
+	margin-left: auto;
+	margin-right: auto;
+	display: flex;
+	flex-direction: column;
+}
+
+// Main title, Hike Finder
+h1{
+	font-family: 'Righteous', cursive;
+	font-size: 6rem;
+	color: rgb(14, 16, 41);
+	text-transform: lowercase;
+
+	&:after{
+		content: ".";
+	}
+}
+
+// Enter Postal Code Input and Submit
+.postal-code{
+	position: relative;
+	align-self: center;
+	display: flex;
+	font-size: 2rem;
+	padding: 30px 0;
+
+	input[type=text]{
+		border-radius:35px;
+		padding:10px 20px;
+		// text-shadow: 5px 2px silver;
+		// border: 1px solid silver;
+		// box-shadow:  2px 3px 0px -2px #ccc;
+	}
+
+	button{
+		position: absolute;
 		align-self: center;
-		display: flex;
-		font-size: 2rem;
-		padding: 30px 0;
+		border: none;
+		background: transparent;
+		padding: 10px 15px;
+		right: 5px;
+		color: rgb(14, 16, 41);
 
-		input[type=text]{
-			border-radius:35px;
-			padding:10px 20px;
-			// text-shadow: 5px 2px silver;
-			// border: 1px solid silver;
-			// box-shadow:  2px 3px 0px -2px #ccc;
-		}
-
-		button{
-			position: absolute;
-			align-self: center;
-			border: none;
-			background: transparent;
-			padding: 10px 15px;
-			right: 5px;
-
-			&:hover,
-			&:focus{
-				color: rgb(37, 46, 116);
-			}
+		&:hover,
+		&:focus{
+			color: rgb(37, 46, 116);
 		}
 	}
 }
 
-// header button i{
-// 	color: rgb(14, 16, 41);
-// }
+// Accessibility label for input to enter postal code
+.visuallyHidden:not(:focus):not(:active) {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    white-space: nowrap;
+    clip-path: inset(100%);
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+}
 
 .wrapper{
 	max-width: 1200px;
@@ -118,6 +132,7 @@ h3{
 	margin-left: 25px;
 }
 
+// NEW POSTAL CODE BUTTON
 .go-home{
 	opacity: 0;
 	position: fixed;
@@ -134,11 +149,10 @@ h3{
 		font-family: 'Patua One', cursive; 
 		border-radius: 20px;
 		border: 2px solid rgb(248, 205, 31);
-
 	}	
-
 }
 
+// RESULTS SECTION
 .results {
 	display: flex;
 	flex-wrap: wrap;
@@ -228,19 +242,6 @@ h3{
 	padding-left: 8px;
 }
 
-.visuallyHidden:not(:focus):not(:active) {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    margin: -1px;
-    border: 0;
-    padding: 0;
-    white-space: nowrap;
-    clip-path: inset(100%);
-    clip: rect(0 0 0 0);
-    overflow: hidden;
-}
-
 footer{
 	background: rgb(37, 46, 116);
 	color: white;
@@ -248,9 +249,15 @@ footer{
 	display: none;
 }
 
+// RESPONSIVE
 @media (max-width: 1210px){
+
 	.info p:first-of-type{
-		display:none;
+		background: rgb(255, 223, 95);
+		position: absolute;
+		padding: 5px;
+		top: 10px;
+		right: 0;
 	}
 	h2{
 		font-size: 2.5rem;
@@ -260,8 +267,13 @@ footer{
 	}
 
 	.results>div{
+		position: relative;
 		margin: 2%;
 		width: 46%;
+	}
+
+	.results div i.fa-car-side{
+		padding-right: 0;
 	}
 }
 @media (max-width: 765px){
@@ -276,7 +288,7 @@ footer{
 		z-index: 10;
 
 		h1{
-			font-size: 5rem;
+			font-size: 5.25rem;
 		}
 	}
 
