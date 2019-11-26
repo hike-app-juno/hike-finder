@@ -192,7 +192,7 @@ $(function(){
     //Instructions to user
     swal({
 		title: 'Welcome!',
-		text: 'Enter a Canadian or American postal code in the text bar and click the magnifying glass to get nearby hikes. Enter \"New Postal Code\" in the top left corner once you\'re done with your results to start again.',
+		text: 'Enter a Canadian or American postal code in the text bar and click the magnifying glass to get nearby hikes. Click \"New Postal Code\" in the top left corner once you\'re done with your results to start again.',
 		type: 'success',
 		showOkButton: true,
 		confirmButtonColor: '#0A0F3C',
