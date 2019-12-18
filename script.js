@@ -115,7 +115,7 @@ hikeApp.displayHikes = function (hikeData){
         const hikeInfo = `
         <div id="hike-info-${[i]}">
             <a href=${hikeWebsite}>
-                <img src="${hikeImage()}" alt=" ">
+                <img src="${hikeImage()}" alt="${hikeName}">
                 <h2>${hikeName}</h2>
             </a>
             <p class="location">${hikeLocation}</p>
