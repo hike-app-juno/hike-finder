@@ -40,7 +40,15 @@ hikeApp.getCoordinates = function(postalCode) {
             hikeApp.getHikes (dLat, dLong);
         })
     }).fail(function(error){
-        alert(`404 - Page Not Found. Click the top left button to try another postal code or try again later!`);
+        swal({
+            title: '404 Error',
+            text: 'Page Not Found. Click the top left button to try another postal code or try again later!',
+            icon: 'error',
+            showOkButton: true,
+            confirmButtonColor: '#0A0F3C',
+            confirmButtonText: 'OK',
+            cancelButtonText: 'No.'
+        });
     });
 };
 
@@ -60,12 +68,28 @@ hikeApp.getHikes = function(dLat, dLong) {
         }
     }).then( function(hikeData){
         if(hikeData.trails.length === 0){
-            alert('Sorry! No hikes were found in this area! Click the top left button to try another postal code.')
+            swal({
+                title: 'Sorry!',
+                text: 'No hikes were found in this area! Click the top left button to try another postal code.',
+                icon: 'error',
+                showOkButton: true,
+                confirmButtonColor: '#0A0F3C',
+                confirmButtonText: 'OK',
+                cancelButtonText: 'No.'
+            });
         }else{
             hikeApp.displayHikes(hikeData);
         }
     }).fail(function(error){
-        alert(`404 - Page Not Found. Click the top left button to try another postal code or try again later!`);
+        swal({
+            title: '404 Error',
+            text: 'Page Not Found. Click the top left button to try another postal code or try again later!',
+            icon: 'error',
+            showOkButton: true,
+            confirmButtonColor: '#0A0F3C',
+            confirmButtonText: 'OK',
+            cancelButtonText: 'No.'
+        });
     });
 }
 
@@ -130,7 +154,15 @@ $.ajax({
         hikeApp.displayRoute(result, resultIndex);
 
     }).fail(function(error){
-        alert(`404 - Page Not Found. Click the top left button to try another postal code or try again later!`);
+        swal({
+            title: '404 Error',
+            text: 'Page Not Found. Click the top left button to try another postal code or try again later!',
+            icon: 'error',
+            showOkButton: true,
+            confirmButtonColor: '#0A0F3C',
+            confirmButtonText: 'OK',
+            cancelButtonText: 'No.'
+        });
     });
 };
 
@@ -165,7 +197,15 @@ $('.go-home').on('click', hikeApp.home = function(){
 // Init method
 hikeApp.init = function () {
     if($("input").val() === "" || $("input").val() === " "){
-        alert("Please enter a postal code")
+        swal({
+            title: 'Oops..',
+            text: 'Looks like you forgot to enter in a postal code!',
+            icon:'error',
+            showOkButton: true,
+            confirmButtonColor: '#0A0F3C',
+            confirmButtonText: 'OK',
+            cancelButtonText: 'No.'
+        });
     }else{
 
         $(".results").html(" ");

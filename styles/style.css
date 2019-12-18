@@ -511,6 +511,10 @@ footer {
   .results > div {
     width: 95%;
   }
+  .results > div:hover, .results > div:focus {
+    -webkit-transform: none;
+            transform: none;
+  }
 }
 
 @media (max-width: 500px) {

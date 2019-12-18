@@ -300,6 +300,11 @@ footer{
 	//Make each hike result container a larger percentage width
 	.results>div{
 		width: 95%;
+
+		&:hover,
+		&:focus{
+			transform: none;
+		}
 	}
 }
 
