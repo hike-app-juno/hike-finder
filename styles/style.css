@@ -284,6 +284,11 @@ h1:after {
   content: ".";
 }
 
+.swal2-popup .swal2-content,
+.swal2-popup .swal2-styled {
+  font-size: 1.5rem;
+}
+
 .postal-code {
   position: relative;
   -ms-flex-item-align: center;

@@ -83,6 +83,12 @@ h1{
 	}
 }
 
+// Sweet alerts
+.swal2-popup .swal2-content,
+.swal2-popup .swal2-styled{
+	font-size: 1.5rem;
+}
+
 // Container with the Enter Postal Code Input and Submit button, flex and format both
 .postal-code{
 	position: relative;
