@@ -284,8 +284,8 @@ h1:after {
   content: ".";
 }
 
-.swal2-popup .swal2-content,
-.swal2-popup .swal2-styled {
+div.swal2-popup .swal2-content,
+.swal2-popup button.swal2-confirm.swal2-styled {
   font-size: 1.5rem;
 }
 
