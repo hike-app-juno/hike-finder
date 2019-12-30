@@ -195,7 +195,8 @@ $('.go-home').on('click', hikeApp.home = function(){
 })
 
 // Init method
-hikeApp.init = function () {
+hikeApp.init = function (event) {
+    event.preventDefault();
     if($("input").val() === "" || $("input").val() === " "){
         swal({
             title: 'Oops..',
